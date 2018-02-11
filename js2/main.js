@@ -3,6 +3,7 @@ import _ from './lib/lodash.min.js'
 import adata from './data/index.js'
 import update from './update/index.js'
 import render from './render/index.js'
+import touchHandler from './event/index.js'
 
 export default function Main2() {
   main()
@@ -17,3 +18,4 @@ const main = _ => {
   window.requestAnimationFrame(main)
   return data;
 }
+canvas.addEventListener('touchstart', touchHandler)

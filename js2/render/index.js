@@ -1,5 +1,5 @@
 import common from '../lib/common.js'
-const {f_log, randomInt, toImg} = common
+const {f_log, randomInt, toImg, getCanvas} = common
 
 const render = (ctx, {list, state, objName, ..._else}) => {
   list.map(({type, ...data}) => {
@@ -41,7 +41,7 @@ const __render = {
     if (state === 0) {
       const {img, x, y, w, h} = data
       ctx.fillStyle = 'rgba(0, 0, 0, 0.5)'
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
+      ctx.fillRect(0, 0, getCanvas().width, getCanvas().height)
       ctx.drawImage(img, x, y, w, h)
     }
   },
@@ -51,7 +51,7 @@ const __render = {
       const { score } = _else
       const scoList = ('' + score).split('')
       scoList.map((e, i) => {
-        ctx.drawImage(toImg('images/flappybird/font_0'+(48+~~e)+'.png'), x - w * scoList / 2 + i * w, y, w, h)
+        ctx.drawImage(toImg('images/flappybird/font_0'+(48+~~e)+'.png'), x - w * scoList.length / 2 + i * w, y, w, h)
       })
     }
   },

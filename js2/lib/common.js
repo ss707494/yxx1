@@ -12,9 +12,12 @@ const toImg = src => {
   return img
 }
 
+const getCanvas = (id = '') => canvas ? canvas : document.getElementById(id)
+
 export default {
   f_log,
   randomInt,
   toImg,
+  getCanvas,
 }
 

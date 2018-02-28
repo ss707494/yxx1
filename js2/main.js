@@ -1,5 +1,5 @@
 import common from './lib/common.js'
-const {f_log, randomInt} = common
+const {f_log, randomInt, getCanvas} = common
 import _ from './lib/lodash.min.js'
 
 import adata from './data/index.js'
@@ -15,10 +15,10 @@ export default function Main2() {
 
 let data = {...adata};
 let eventsL = eventsList;
-let ctx = canvas.getContext('2d')
+let ctx = getCanvas().getContext('2d')
 let aniId;
 const main = _ => {
-  ctx.clearRect(0, 0, canvas.width, canvas.height)
+  ctx.clearRect(0, 0, getCanvas().width, getCanvas().height)
   const _o = dealEvents(data, eventsL)
   eventsL = _o.eventsList
   data = update(_o.data)
@@ -31,7 +31,7 @@ const main = _ => {
   return data;
 }
 
-canvas.addEventListener('touchstart', e => {
+getCanvas().addEventListener('touchstart', e => {
   e.preventDefault()
   if (data.state === 2 || data.state === 0) {
     window.cancelAnimationFrame(aniId)
